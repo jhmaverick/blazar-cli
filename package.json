@@ -1,0 +1,38 @@
+{
+  "name": "blazar-console",
+  "description": "Leitor de logs para o Blazar Framework.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./console.js",
+  "bin": {
+    "blazar-console": "./console.js"
+  },
+  "keywords": [
+    "blazar",
+    "framework",
+    "console",
+    "log"
+  ],
+  "tags": [
+    "blazar",
+    "framework",
+    "console",
+    "log"
+  ],
+  "homepage": "https://github.com/jhmaverick/blazar-console#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhmaverick/blazar-console.git"
+  },
+  "author": {
+    "name": "João Henrique",
+    "email": "joao_henriquee@outlook.com",
+    "homepage": "https://github.com/jhmaverick/"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "express": "latest",
+    "node-notifier": "^5.2.1",
+    "process": "^0.11.10"
+  }
+}
