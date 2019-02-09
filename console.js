@@ -85,6 +85,7 @@ app.get('/', function (req, res) {
         req.query['date'] !== undefined
     ) {
         let log_name = types(req.query['type'] || "d");
+        log(req.query['tag'] != null ? "- " + req.query['tag'] + " " : "");
         console.log(req.query['url'] + " " + chalk.gray(req.query['date']));
 
         console.log("");
