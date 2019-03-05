@@ -1,3 +1,11 @@
+/*
+ * This file is part of Blazar Framework.
+ *
+ * (c) João Henrique <joao_henriquee@outlook.com>
+ *
+ * For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 const chalk = require('chalk');
 
 const TYPE_NAME = {
@@ -70,5 +78,24 @@ function prepareLog(log_data) {
     return log_msg;
 }
 
-
 module.exports = {TYPE_NAME, prepareLog, types};
+
+/**
+ * @typedef {object} log_type
+ *
+ * @property {string} [type=d] (e|w|i|d)
+ * @property {string} url
+ * @property {string} date (2019-02-09 18:32:34)
+ * @property {object} main
+ * @property {string} main.type (text|throwable|object)
+ * @property {string} [main.text] (text|object)
+ * @property {string} [main.title] (throwable)
+ * @property {string} [main.trace] (throwable)
+ * @property {object|null} [aux]
+ * @property {string} aux.type (text|throwable|object)
+ * @property {string} [aux.text] (text|object)
+ * @property {string} [aux.title] (throwable)
+ * @property {string} [aux.trace] (throwable)
+ * @property {string} [trace]
+ * @property {string} [tag]
+ */
