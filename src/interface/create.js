@@ -12,6 +12,7 @@ const http = require('https');
 const process = require('process');
 const unzipper = require('unzipper');
 const editJsonFile = require("edit-json-file");
+const c = require("child_process");
 
 const URL_REPOSITORY = "https://codeload.github.com/jhmaverick/blazar-project/zip/master";
 const GIT_MAIN_DIR = "blazar-project-master";
@@ -62,7 +63,7 @@ function download(cb) {
     req.on('response', function (data) {
         len = data.headers['content-length'];
 
-        console.log("Iniciando download dos arquivos");
+        console.log("Iniciando download dos arquivos...");
         if (!isNaN(len)) {
             len = parseInt(len, 10);
             total = len / 1048576;
@@ -145,6 +146,9 @@ function createProject(name) {
         unzip(() => {
             fs.unlink(ZIP_DEST);
             editData();
+
+            console.log("Instalando dependencias do composer...");
+            c.execSync('cd "' + project_dir + '" && composer install', {stdio: 'inherit'});
         });
     });
 }
