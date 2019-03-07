@@ -1,7 +1,7 @@
 {
   "name": "blazar-cli",
   "description": "Leitor de logs para o Blazar Framework.",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "license": "MIT",
   "main": "src/cli.js",
   "bin": {

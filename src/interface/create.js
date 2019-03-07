@@ -37,7 +37,7 @@ function download(cb) {
         res.on("data", function (chunk) {
             cur += chunk.length;
 
-            // Limpa a ultima linha do console
+            // Retorna para primeira posição da ultima linha do console
             process.stdout.write((process.platform === "win32") ? "\033[0G" : "\r");
 
             process.stdout.write(
@@ -51,7 +51,10 @@ function download(cb) {
             try {
                 zip_file.close(cb);
 
-                console.log("\n\nDownload concluído");
+                // Retorna para primeira posição da ultima linha do console
+                process.stdout.write((process.platform === "win32") ? "\033[0G" : "\r");
+
+                console.log("Download concluído   \n");
             } catch (e) {
                 console.log("Error: " + e.message);
                 fs.unlink(ZIP_DEST);
@@ -111,7 +114,7 @@ function unzip(cb) {
  * Aplica informações nos arquivos
  */
 function editData() {
-    const manifest_path = path.resolve(project_dir, 'src/blazar-manifest.json');
+    const manifest_path = path.resolve(project_dir, 'blazar-manifest.json');
 
     if (fs.existsSync(manifest_path)) {
         let manifest = editJsonFile(manifest_path);
