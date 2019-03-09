@@ -21,7 +21,6 @@ function consoleLogs(port) {
         if (result == false) {
             console.log('Porta ' + port + ' já está sendo utilizada, escolha outra porta.');
         } else {
-
             let app = express();
 
             app.get('/', function (req, res) {
