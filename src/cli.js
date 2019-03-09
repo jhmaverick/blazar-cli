@@ -9,7 +9,8 @@
  */
 
 const create = require('./interface/create');
-const serverLogs = require('./interface/serve');
+const consoleLogs = require('./interface/console');
+const serve = require('./interface/serverPHP');
 const readLogs = require('./interface/read');
 const yargs = require('yargs');
 
@@ -25,15 +26,34 @@ const argv = yargs
     }, (argv) => {
         create(argv.name);
     })
-    .command('serve [port]', 'Inicia um servidor local para receber os logs', (yargs) => {
-        return yargs.positional('port', {
+    .command('serve [path] [port] [port_logs]', 'Inicia um servidor PHP', (yargs) => {
+        return yargs.positional('path', {
+            describe: 'Caminho para iniciar',
+            required: true,
+            type: 'string'
+        }).positional('port', {
             describe: 'Define a porta que será utilizada pelo servidor',
+            default: 8000,
+            required: true,
+            type: 'int'
+        }).positional('port_logs', {
+            describe: 'Define a porta que será utilizada para receber os logs',
             default: 4000,
             required: true,
             type: 'int'
         })
     }, (argv) => {
-        serverLogs(argv.port);
+        serve(argv.port, argv.port_logs, argv.path);
+    })
+    .command('console [port]', 'Inicia um servidor local para receber logs', (yargs) => {
+        return yargs.positional('port', {
+            describe: 'Define a porta que será utilizada para receber os logs',
+            default: 4000,
+            required: true,
+            type: 'int'
+        })
+    }, (argv) => {
+        consoleLogs(argv.port);
     })
     .command('read [path]', 'Ler logs de um arquivo json', (yargs) => {
         return yargs
